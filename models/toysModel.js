@@ -10,7 +10,7 @@ let toysSchema = new mongoose.Schema({
     date_created: {
         type: Date, default: Date.now()
     },
-    User_id: String
+    user_id: String
 })
 
 exports.toysModel = mongoose.model("toys", toysSchema);
@@ -21,7 +21,7 @@ exports.validatToy = _req_body => {
         info: joi.string().max(350).allow(null, ""),
         category: joi.string().required(),
         img_url: joi.string().allow(null, ""),
-        price: joi.number().required().min(1)
+        price: joi.number().required().min(1).max(99999)
     })
     return Joivalid.validate(_req_body)
 }

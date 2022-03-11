@@ -70,7 +70,7 @@ router.post("/", auth, async (req, res) => {
     }
     try {
         let data = new toysModel(req.body);
-        data.User_id = req.datatoken._id;
+        data.user_id = req.datatoken._id;
         await data.save();
         res.json(data).status(201);
 
