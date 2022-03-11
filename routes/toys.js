@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     try {
         let page = req.query.page || 1;
-        let data = await toysModel.find({}).skip((page-1)*10);
+        let data = await toysModel.find({}).skip((page - 1) * 10);
         res.json(data);
     }
 
@@ -23,7 +23,7 @@ router.get("/search", async (req, res) => {
         let search = req.query.s;
         let sReg = new RegExp(search, "i");
 
-        let data = await toysModel.find({ $or: [{ name: sReg }, { info: sReg }] }).limit(10).skip((page-1)*10);
+        let data = await toysModel.find({ $or: [{ name: sReg }, { info: sReg }] }).limit(10).skip((page - 1) * 10);
         res.json(data);
     }
 
@@ -39,7 +39,7 @@ router.get("/cat/:catname", async (req, res) => {
         let page = req.query.page || 1;
         let search = req.params.catname;
         let sReg = new RegExp(search, "i");
-        let data = await toysModel.find({ category: sReg }).limit(10).skip((page-1)*10);;
+        let data = await toysModel.find({ category: sReg }).limit(10).skip((page - 1) * 10);;
         res.json(data);
     }
 
@@ -48,7 +48,7 @@ router.get("/cat/:catname", async (req, res) => {
     }
 })
 
-// search between max and min 
+// search between max and min   
 router.get("/prices", async (req, res) => {
     try {
         let min = req.query.min;
@@ -56,7 +56,7 @@ router.get("/prices", async (req, res) => {
         let data = await toysModel.find({ price: { $lte: max, $gte: min } });
         res.json(data);
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 })

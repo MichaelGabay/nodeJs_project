@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 })
 
 //check token
-router.get("/checkToken", auth, (req, res) => {
+router.get("/   ", auth, (req, res) => {
 
   res.json({ status: "ok" });
 
@@ -52,7 +52,7 @@ router.post("/logIn", async (req, res) => {
     if (!validPas) {
       return res.json("invalid email or password");
     }
-    let token = genToken(user._id,user.role);
+    let token = genToken(user._id, user.role);
     res.json({ token }).status(200);
   }
   catch (err) {

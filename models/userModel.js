@@ -3,8 +3,8 @@ const joi = require("joi");
 const jwt = require("jsonwebtoken");
 const { infConect } = require("../config/secret");
 
-exports.genToken = (_user_id,_userRole) => {
-    let token = jwt.sign({ _id: _user_id,_role:_userRole}, infConect.secretToken, { expiresIn: "600mins" })
+exports.genToken = (_user_id, _userRole) => {
+    let token = jwt.sign({ _id: _user_id, _role: _userRole }, infConect.secretToken, { expiresIn: "600mins" })
     return token;
 }
 
